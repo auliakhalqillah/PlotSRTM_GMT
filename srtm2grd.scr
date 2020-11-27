@@ -1,0 +1,46 @@
+#!/bin/bash
+
+echo ""
+echo "CONVERT SRTM (TIFF) FILE TO GRD FILE"
+echo "=========================================================="
+
+# Set input and output files
+input=SRTM/sumatra.tif
+outputgrd=sumatra.grd
+grdresamp=sumatra_resamp.grd
+outputgrad=sumatra_grad.grad
+cpt=sumatra_topo.cpt
+
+# Set variables
+gridspacing=0.001
+azimuth=215
+# t = using cumulative Cauchy distribution
+# e = using cumulative Laplace distribution
+normalization=t2
+typecpt=topo
+rangecpt=0/3000
+stepcpt=0/3000/200
+
+echo "[Convert tif to grd file...]"
+echo ""
+gdal_translate -of GMT $input $outputgrd
+echo ""
+echo "[Resample grd file...]"
+echo ""
+grdsample $outputgrd -I$gridspacing -G$grdresamp -V
+echo ""
+echo "[Build gradient file...]"
+echo ""
+grdgradient $grdresamp -N$normalization -A$azimuth -G$outputgrad -V
+echo ""
+echo "[Make color point data (CPT)...]"
+echo ""
+grd2cpt $outputgrd -C$typecpt -G$rangecpt -L$rangecpt -S$stepcpt -Z > $cpt
+#makecpt -C$typecpt -G$rangecpt -T$stepcpt -Z > $cpt
+echo "Ouput:"
+echo "Grid:" $outputgrd
+echo "Grid Resample:" $grdresamp
+echo "Grad:" $outputgrad
+echo "Cpt:" $cpt
+echo ""
+echo "[Process Complete]"
