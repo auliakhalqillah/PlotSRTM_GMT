@@ -1,0 +1,40 @@
+#!/bin/bash
+clear
+echo "Process ..."
+# Set configurations
+gmtset PS_MEDIA 297x500
+gmtset PS_PAGE_ORIENTATION landscape
+gmtset MAP_FRAME_TYPE plain
+gmtset FONT 15p,Arial,black
+gmtset MAP_ANNOT_OFFSET_PRIMARY 5p
+gmtset MAP_ANNOT_OFFSET_SECONDARY 5p
+
+
+# Set variables
+output=simple_map.ps
+title=Indonesia
+region=95/150/-10/10
+proj=95/-10/15
+scale=10f5/4f2WneS
+land=40/180/99 
+sea=174/214/241 
+symcolor=192/57/43 
+linecosat=0,2,0/0/0
+
+# plot base map
+psbasemap -R$region -JM$proj -X2 -Y2 -B$scale:.$title: -K > $output
+# draw coast line
+pscoast -R -JM -W$linecoast -S$sea -G$land -Df -K -O >> $output
+# show text
+echo 101 0 Sumatra | pstext -R -JM -F+a-55 -D0 -K -V -O >> $output
+echo 115 0 Kalimantan | pstext -R -JM -F+a0 -D0 -K -V -O >> $output
+echo 110 -7 Jawa | pstext -R -JM -F+a0 -D0 -K -V -O >> $output
+echo 120 -2 Sulawesi | pstext -R -JM -F+a0 -D0 -K -V -O >> $output
+echo 140 -4 Papua | pstext -R -JM -F+a0 -D0 -K -V -O >> $output
+# plot symbol
+echo 99 3.2 | psxy -JM -R -G$symcolor -St0.5 -P -O >> $output
+
+echo "Output:" $output
+echo "Done ..."
+psconvert $output -A -Tg -P
+gv $output
