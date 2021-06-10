@@ -1,10 +1,14 @@
 # Plot Shuttle Radar Topography Mission (SRTM) Data Using Generic Mapping Tools (GMT) 6
+
+
 The SRTM data (land data) and Bathymetry data (Ocean data) are combined to produce a good map by using Generic Mapping Tools (GMT) version 6. The SRTM and Bathymetry data are downloaded separately where:
 
 - The SRTM data can be downloaded in http://dwtkns.com/srtm/ and 
 - Bathymetry data can be downloaded in https://maps.ngdc.noaa.gov/viewers/wcs-client/. 
 
-All process in this tutorial is operated in Ubuntu Operating Sytem (14.04)
+All process in this tutorial is operated in Ubuntu Operating Sytem (14.04) 
+
+<img width=50 height=50 src="https://cdn0.iconfinder.com/data/icons/flat-round-system/512/ubuntu-512.png"> <img width=100 height=50 src="https://www.generic-mapping-tools.org/_static/gmt-logo.png">
 
 # Preparation
 ## Install  Geospatial Data Abstraction Library (GDAL) for Ubuntu
