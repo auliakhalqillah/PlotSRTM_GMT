@@ -11,7 +11,7 @@ All process in this tutorial is operated in Ubuntu Operating Sytem (14.04)
 <img width=50 height=50 src="https://cdn0.iconfinder.com/data/icons/flat-round-system/512/ubuntu-512.png"> <img width=100 height=50 src="https://www.generic-mapping-tools.org/_static/gmt-logo.png">
 
 # Preparation
-## Install  Geospatial Data Abstraction Library (GDAL) for Ubuntu
+## Installation of Geospatial Data Abstraction Library (GDAL) for Ubuntu
 Type the following command in your terminal:
 ```
 sudo add-apt-repository ppa:ubuntugis/ppa && sudo apt-get update
@@ -19,7 +19,7 @@ sudo apt-get update
 sudo apt-get install gdal-bin
 sudo apt-get install libgdal-dev
 ```
-## Install  Geospatial Data Abstraction Library (GDAL) for Mac OS
+## Install of Geospatial Data Abstraction Library (GDAL) for Mac OS
 To install GDAL for Mac OS, you can download the GDAL on http://www.kyngchaos.com/software/frameworks/ and select the GDAL version depends on your Mac OS version. The installation process just click on the downloaded file and follow the steps.
 
 # Generate Map
